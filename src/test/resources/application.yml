@@ -1,0 +1,23 @@
+spring:
+  messages:
+    basename: i18n/bundle
+    encoding: utf-8
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    schema: schema.sql
+    data: data_test.sql
+    initialization-mode: always
+  jpa:
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: none
+  h2:
+    console:
+      enabled: true
+
+app:
+  locale: ru_RU
