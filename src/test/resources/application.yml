@@ -7,9 +7,6 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password: password
-    schema: schema.sql
-    data: data_test.sql
-    initialization-mode: always
   jpa:
     show-sql: true
     hibernate:

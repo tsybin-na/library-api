@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="2023-10-01-create-table-authors" author="n.tsybin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="authors"/>
+            </not>
+        </preConditions>
+        <createTable tableName="authors">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(250)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="authors">
+            <column name="id" value="c87074c2-1ac6-446b-bb40-043e27d476c8"/>
+            <column name="name" value="Андрей Белянин"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="id" value="d465248a-ba75-47ee-8b65-74b2862c2e90"/>
+            <column name="name" value="Агата Кристи"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="id" value="1cbf6e1a-786c-4837-9a7b-3d2fdd9f7490"/>
+            <column name="name" value="Александра Маринина"/>
+        </insert>
+        <insert tableName="authors">
+            <column name="id" value="db12f04a-0c40-4ad2-be01-eab9033dd067"/>
+            <column name="name" value="Руэл Толкин"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="2023-10-01-create-table-books_authors" author="n.tsybin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="books_authors"/>
+            </not>
+        </preConditions>
+        <createTable tableName="books_authors">
+            <column name="book_id" type="UUID">
+                <constraints foreignKeyName="books_authors_book_id_fk" references="books(id)" nullable="false"/>
+            </column>
+            <column name="author_id" type="UUID">
+                <constraints foreignKeyName="books_authors_author_id_fk" references="authors(id)" nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="books_authors" columnNames="book_id,author_id" constraintName="books_authors_pk"/>
+
+        <insert tableName="books_authors">
+            <column name="book_id" value="1cb24a49-a8c4-47c6-9b01-e245fb7cdce2"/>
+            <column name="author_id" value="d465248a-ba75-47ee-8b65-74b2862c2e90"/>
+        </insert>
+        <insert tableName="books_authors">
+            <column name="book_id" value="be35ed66-8e18-4972-804f-97a7c193c2d1"/>
+            <column name="author_id" value="c87074c2-1ac6-446b-bb40-043e27d476c8"/>
+        </insert>
+        <insert tableName="books_authors">
+            <column name="book_id" value="bc2da958-585e-416e-bac3-8a91c825f206"/>
+            <column name="author_id" value="c87074c2-1ac6-446b-bb40-043e27d476c8"/>
+        </insert>
+        <insert tableName="books_authors">
+            <column name="book_id" value="a7e41aa9-4e80-4900-804f-4000abaebbfa"/>
+            <column name="author_id" value="d465248a-ba75-47ee-8b65-74b2862c2e90"/>
+        </insert>
+        <insert tableName="books_authors">
+            <column name="book_id" value="08a78536-ea79-4c9a-aad8-6f7a2dcf72ef"/>
+            <column name="author_id" value="c87074c2-1ac6-446b-bb40-043e27d476c8"/>
+        </insert>
+
+    </changeSet>
+
+    <changeSet id="2023-10-01-create-idx_books_authors_book_id" author="n.tsybin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="books_authors" columnNames="book_id"/>
+            </not>
+        </preConditions>
+
+        <createIndex tableName="books_authors" indexName="books_authors_book_id_idx">
+            <column name="book_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="2023-10-01-create-idx_books_authors_author_id" author="n.tsybin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <indexExists tableName="books_authors" columnNames="author_id"/>
+            </not>
+        </preConditions>
+
+        <createIndex tableName="books_authors" indexName="books_authors_author_id_idx">
+            <column name="author_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

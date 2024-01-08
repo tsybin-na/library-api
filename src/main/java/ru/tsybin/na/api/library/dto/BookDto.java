@@ -2,16 +2,22 @@ package ru.tsybin.na.api.library.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import ru.tsybin.na.api.library.enumeration.GenreEnum;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
 public class BookDto {
-    Long id;
+    private UUID id;
+
+    private OffsetDateTime createdAt;
 
     @NotBlank(message = "{validation.name.empty}")
     String name;
@@ -19,18 +25,18 @@ public class BookDto {
     @NotBlank(message = "{validation.description.empty}")
     private String description;
 
+    @NotNull(message = "{validation.genre.empty}")
+    private GenreEnum genre;
+
+    private Boolean bestseller = Boolean.FALSE;
+
+    private Integer minimumOnDisplay = 0;
+
     @NotEmpty(message = "{validation.authors.empty}")
-    List<Long> authorsIds = new ArrayList<>();
+    private List<UUID> authorsIds = new ArrayList<>();
 
-    @NotEmpty(message = "{validation.genres.empty}")
-    List<Long> genresIds = new ArrayList<>();
-
-    public void addAuthorId(Long authorId) {
+    public void addAuthorId(UUID authorId) {
         authorsIds.add(authorId);
-    }
-
-    public void addGenreId(Long genreId) {
-        genresIds.add(genreId);
     }
 
 }

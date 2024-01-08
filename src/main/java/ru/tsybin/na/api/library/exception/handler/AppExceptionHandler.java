@@ -29,7 +29,7 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(EntityNotFoundException.class)
-    protected AppExceptionDto handleEntityNotFound(EntityNotFoundException ex) {
+    public AppExceptionDto handleEntityNotFound(EntityNotFoundException ex) {
         log.warn(ex.getMessage());
         AppExceptionDto appExceptionDto = new AppExceptionDto();
         appExceptionDto.setCode(ENTITY_NOT_FOUND);

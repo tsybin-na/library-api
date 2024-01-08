@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="2023-10-01-create-table-books" author="n.tsybin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="books"/>
+            </not>
+        </preConditions>
+        <createTable tableName="books">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="genre" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bestseller" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="minimum_on_display" type="INTEGER">
+            </column>
+        </createTable>
+
+        <insert tableName="books">
+            <column name="id" value="1cb24a49-a8c4-47c6-9b01-e245fb7cdce2"/>
+            <column name="created_at" valueDate="now()"/>
+            <column name="updated_at" valueDate="now()"/>
+            <column name="name" value="Убийство Роджера Экройда"/>
+            <column name="description" value="Ты никогда не догадаешься, кто убийца. Правда. Книга вышла в 1926 году и вызвала настоящий шок. До сих пор ни один из авторов детективных романов не догадался сделать убийцей… Все, все, молчим."/>
+            <column name="genre" value="DETECTIVES"/>
+            <column name="bestseller" value="FALSE"/>
+            <column name="minimum_on_display" value="0"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" value="be35ed66-8e18-4972-804f-97a7c193c2d1"/>
+            <column name="created_at" valueDate="now()"/>
+            <column name="updated_at" valueDate="now()"/>
+            <column name="name" value="Посрамитель шайтана"/>
+            <column name="description" value="Интересно, а что делает рослый москвич, бывший помощник прокурора, не хило оторвавшийся в своё время в благословенном Багдаде, когда встречает на ночной улице узкоглазого джинна с ящиком пива под мышкой?! Разумеется, радуется, кричит: «Здравствуй, Бабудай-Ага!» и всё такое… Но уж конечно не ждёт, что тот прямолинейно заявит: «Очень скучно без тебя на Востоке, Лёва-джан!»… А ведь именно так всё и произошло…"/>
+            <column name="genre" value="FANTASY"/>
+            <column name="bestseller" value="FALSE"/>
+            <column name="minimum_on_display" value="0"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" value="bc2da958-585e-416e-bac3-8a91c825f206"/>
+            <column name="created_at" valueDate="now()"/>
+            <column name="updated_at" valueDate="now()"/>
+            <column name="name" value="Верните вора!"/>
+            <column name="description" value="И вот когда весь исламский мир стоял на грани войны, в благородную Бухару вернулся Багдадский вор – Лев Оболенский! Как он попал на Восток, как превратил эмира в осла, как одолел городскую стражу Шехмета, как летал на ковре-самолете, как заставил служить себе самого шайтана, как спас истинные ценности Корана, остановив маньяка и злодея, черного шейха Хайям-Кара, кто бы знал…"/>
+            <column name="genre" value="FANTASY"/>
+            <column name="bestseller" value="FALSE"/>
+            <column name="minimum_on_display" value="3"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" value="a7e41aa9-4e80-4900-804f-4000abaebbfa"/>
+            <column name="created_at" valueDate="now()"/>
+            <column name="updated_at" valueDate="now()"/>
+            <column name="name" value="Десять негритят» (1939)"/>
+            <column name="description" value="Десять негритят решили пообедать — один подавился, и их осталось девять». Самый тяжелый и трагичный из детективов писательницы. Идеальный триллер: вся правда о мраке преступных душ. У нас экранизирован Говорухиным — с гениальной Татьяной Друбич в главной роли. И да, из соображений политкорректности на Западе роман теперь выходит под названием «И никого не стало."/>
+            <column name="genre" value="DETECTIVES"/>
+            <column name="bestseller" value="TRUE"/>
+            <column name="minimum_on_display" value="5"/>
+        </insert>
+        <insert tableName="books">
+            <column name="id" value="08a78536-ea79-4c9a-aad8-6f7a2dcf72ef"/>
+            <column name="created_at" valueDate="now()"/>
+            <column name="updated_at" valueDate="now()"/>
+            <column name="name" value="Свирепый ландграф"/>
+            <column name="description" value="Вас ждет увлекательное продолжение веселых приключений Лорда Скиминока, тринадцатого ландграфа Меча Без Имени."/>
+            <column name="genre" value="FANTASY"/>
+            <column name="bestseller" value="TRUE"/>
+            <column name="minimum_on_display" value="7"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
