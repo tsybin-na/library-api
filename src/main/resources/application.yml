@@ -3,10 +3,10 @@ spring:
     basename: i18n/bundle
     encoding: utf-8
   datasource:
-    url: jdbc:h2:mem:library
-    driverClassName: org.h2.Driver
-    username: sa
-    password: password
+    driver-class-name: org.postgresql.Driver
+    url: "jdbc:postgresql:library-api"
+    username: "postgres"
+    password: "password"
   jpa:
     show-sql: true
     hibernate:
@@ -14,9 +14,6 @@ spring:
     open-in-view: false
   hibernate:
     format_sql: true
-  h2:
-    console:
-      enabled: true
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
     enabled: true
